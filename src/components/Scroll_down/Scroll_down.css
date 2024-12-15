@@ -1,0 +1,22 @@
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.scroll-down {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  font-size: 0.8rem;
+  color: #808080;
+}
+
+.scroll-down svg {
+  margin: auto;
+}

@@ -1,0 +1,244 @@
+.dataset-description {
+  width: 60%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dataset-card {
+  border-radius: 12px;
+  padding: 3.5rem;
+  margin-bottom: 4rem;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dataset-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.dataset-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.dataset-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #1a1a1a;
+}
+
+.dataset-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.dataset-subsubtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dataset-subsubtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+  width: auto;
+}
+
+.dataset-subsubtitle-description {
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.dataset-content {
+  color: #444;
+  line-height: 1.8;
+}
+
+.goal-section {
+  margin-bottom: 5rem;
+}
+
+.goal-label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.goal-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.attribute {
+  margin: 0 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.attribute:last-child {
+  margin-bottom: 0;
+}
+
+.attribute-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.attribute-text {
+  font-size: 1.1rem;
+  margin: 0;
+  flex: 1;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .dataset-description {
+    padding: 1rem;
+  }
+
+  .dataset-card,
+  .dataset-card-first-card {
+    padding: 2rem;
+  }
+
+  .dataset-title {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .dataset-subtitle,
+  .dataset-subsubtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .goal-section,
+  .attribute {
+    margin: 0 1rem 1.5rem;
+  }
+
+  .attribute {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .attribute-label {
+    min-width: auto;
+    margin-bottom: 0.3rem;
+  }
+
+  .goal-label {
+    font-size: 1.2rem;
+  }
+
+  .goal-text,
+  .attribute-text {
+    font-size: 1rem;
+  }
+
+  .dataset-subsubtitle-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.attribute-list {
+  margin: 0 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.attribute-list .attribute-text {
+  font-size: 0.9rem;
+}
+
+/* 텍스트 페이드인 효과 추가 */
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible .fade-in-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* attribute-list 내부 텍스트 딜레이 설정 */
+.attribute-list .fade-in-text:nth-child(1) { transition-delay: 0.6s; }
+.attribute-list .fade-in-text:nth-child(2) { transition-delay: 0.8s; }
+.attribute-list .fade-in-text:nth-child(3) { transition-delay: 1.0s; }
+.attribute-list .fade-in-text:nth-child(4) { transition-delay: 1.2s; }
+.attribute-list .fade-in-text:nth-child(5) { transition-delay: 1.4s; }
+.attribute-list .fade-in-text:nth-child(6) { transition-delay: 1.6s; }
+.attribute-list .fade-in-text:nth-child(7) { transition-delay: 1.8s; }
+.attribute-list .fade-in-text:nth-child(8) { transition-delay: 2.0s; }
+.attribute-list .fade-in-text:nth-child(9) { transition-delay: 2.2s; }
+.attribute-list .fade-in-text:nth-child(10) { transition-delay: 2.4s; }
+.attribute-list .fade-in-text:nth-child(11) { transition-delay: 2.6s; }
+
+/* 서브타이틀 컨테이너 딜레이 */
+.dataset-subsubtitle-container.fade-in-text {
+  transition-delay: 0.4s;
+}
+
+/* 기존 카드 딜레이는 유지 */
+.dataset-card-first-card.fade-in.visible {
+  transition-delay: 0.3s;
+}
+
+.dataset-card.fade-in.visible:nth-of-type(2) {
+  transition-delay: 0.6s;
+}
+
+.dataset-card.fade-in.visible:nth-of-type(3) {
+  transition-delay: 0.9s;
+}
+
+.dataset-card.fade-in.visible:nth-of-type(4) {
+  transition-delay: 1.2s;
+}
+
+.dataset-card.fade-in.visible:nth-of-type(5) {
+  transition-delay: 1.5s;
+}

@@ -1,0 +1,90 @@
+.dataset-description {
+  padding: 20px;
+  max-width: 100%;
+  max-width: 80%;
+}
+.dataset-card-first-card {
+  padding: 30px;
+  margin-bottom: 20px;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.dataset-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+  text-align: left;
+}
+
+.dataset-card.visible,
+.dataset-card-first-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dataset-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dataset-subtitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #444;
+  text-align: left;
+}
+
+.dataset-content {
+  margin-top: 15px;
+}
+
+.attribute-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.attribute-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.goal-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
