@@ -1,0 +1,267 @@
+/* 전체 컨테이너 스타일링 */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #333;
+  background-color: #F7F9FC;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* body 태그에도 배경색 적용 */
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #F7F9FC;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Webkit 브라우저용 스크롤바 숨김 */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* 헤더 스타일링 */
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* 타이틀 컨테이너 추가 */
+.header-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 스크롤 다운 컴포넌트를 위한 스타일 */
+.scroll-down {
+  margin-bottom: 5rem;
+  color: white;
+}
+
+.hero-title {
+  font-size: 3.0rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+/* 섹션 스타일링 */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+  margin-top: 10rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 페이지 전환 스타일링 */
+.page-change {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+  will-change: opacity, transform;
+  background-color: #1a1a1a;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-change.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-change-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+  max-width: 1000px;
+  padding: 0 2rem;
+}
+
+.page-change.active .page-change-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.page-change-content {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+  padding: 0 2rem;
+}
+
+.page-change.active .page-change-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* 섹션 제목 스타일링 */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 차트 컨텐츠 스타일링 */
+.chart-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-subtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 2rem 0;
+  text-align: center;
+  color: #444;
+}
+
+/* 예시 섹션 스타일링 */
+.example {
+  width: 68%;
+  margin: 2rem 8rem;
+  padding: 2rem 4rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.example-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .example {
+    width: 85%;
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  .chart-content {
+    padding: 1rem;
+  }
+
+  .page-change-title {
+    font-size: 2.5rem;
+  }
+
+  .page-change-content {
+    font-size: 1.2rem;
+  }
+}
