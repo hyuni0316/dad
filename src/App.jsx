@@ -7,9 +7,13 @@ import Chart1_5 from "./components/Chart1_5/Chart1_5.jsx";
 import Chart1_6 from "./components/Chart1_6/Chart1_6.jsx";
 import Chart1_7 from "./components/Chart1_7/Chart1_7.jsx";
 import Chart1_11 from "./components/Chart1_11/Chart1_11.jsx";
+import Chart1_12 from "./components/Chart1_12/Chart1_12.jsx";
+import Chart1_13 from "./components/Chart1_13/Chart1_13.jsx";
+import Chart1_14 from "./components/Chart1_14/Chart1_14.jsx";
 // import Chart1_8 from "./components/Chart1_8/Chart1_8.jsx";
 // import Chart1_9 from "./components/Chart1_9/Chart1_9.jsx";
 // import Chart1_10 from "./components/Chart1_10/Chart1_10.jsx";
+
 import Introduction from "./components/Introduction/Introduction.jsx";
 import DatasetDescription from "./components/DatasetDescription/DatasetDescription.jsx";
 import ExampleConversation from "./components/ExampleConversation/ExampleConversation.jsx";
@@ -130,6 +134,33 @@ const App = () => {
           <Chart1_11 />
         </div>
       </section>
+
+
+      <section className="section">
+        <div className="section-title">How often does topic switching occur during the conversation flow?</div>
+        <div className="chart-content">
+          <Chart1_12 />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-title">
+          How often did the interviewer repeat the same question? <br />
+          How often did the interviewee repeat the same response?
+        </div>
+        <div className="chart-content">
+          <Chart1_13 />
+        </div>
+      </section> 
+
+      <section className="section">
+        <div className="section-title">
+          How much valuable information is contained in the responses?
+        </div>
+        <div className="chart-content">
+          <Chart1_14 />
+        </div>
+      </section> 
 
 
 

@@ -1,0 +1,35 @@
+.chart-container {
+  padding: 20px;
+}
+
+.chart-wrapper {
+  margin: 20px 0;
+}
+
+.detail-text {
+  margin-top: 30px;
+}
+
+.insight-section {
+  margin-bottom: 20px;
+}
+
+.insight-section strong,
+.key-insight strong {
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.insight-section p,
+.key-insight p {
+  color: #34495e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.key-insight {
+  margin-top: 25px;
+  padding: 0px 30px 15px;
+  border-radius: 4px;
+} 

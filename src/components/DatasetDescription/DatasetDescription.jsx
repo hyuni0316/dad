@@ -15,7 +15,8 @@ const DatasetDescription = () => {
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.01,
+        rootMargin: '50px'
       }
     );
 
