@@ -123,25 +123,28 @@ const Chart1_1 = ({scenario}) => {
         </div>
       </div>
       <div className="detail-text">
-        <div className="insight-section">
-          <strong>✔️ Characteristics of the Best Scenario: </strong>
-          <p>The interaction between the interviewer and the interviewee is marked by short, frequent exchanges. 
-            While the volume of speech is minimal, the frequency of conversational turns is high, 
-            maintaining an engaging and dynamic flow.</p>
-        </div>
+      <div className="insight-section">
+        <strong>✔️ Speech Patterns by Scenario</strong>
+        <p>
+          Although the differences were not substantial across scenarios, 
+          the difference in speech volume between the interviewer and the interviewee was smallest in the best scenario.
+          Interestingly, in the best scenario, the speech volume per turn was relatively lower compared 
+          to the worst and normal scenarios. However, the total number of interactions between the interviewer
+           and the interviewee was 1,033 turns, making it the most dynamic scenario.
+        </p>
+      </div>
 
-        <div className="insight-section">
-          <strong>✔️ Characteristics of the Worst Scenario:</strong>
-          <p>In contrast, this scenario is characterized by longer, more extended utterances in a single turn. 
-            This results in lengthier conversations that can feel drawn-out and disrupt the natural flow of dialogue.</p>
-        </div>
+      <div className="key-insight">
+        <strong>📌 Key Insights</strong>
+        <p>
+          A lower speech volume per turn does not necessarily indicate a poor interview. 
+          To determine the quality of an interview, it is essential to consider the overall speech volume 
+          and the meaningfulness of the information exchanged. 
+          The analysis might suggest that maintaining a high number of dialogue turns with concise utterances can enhance 
+          the conversational experience, making it more engaging and productive.
+        </p>
+      </div>
 
-        <div className="key-insight">
-          <strong>📌 Key Insights:</strong>
-          <p>Frequent, concise exchanges appear to enhance both the effectiveness and the engagement of the conversation. 
-            This suggests that maintaining a high frequency of dialogue turns with shorter utterances may contribute significantly 
-            to a more immersive and productive conversational experience.</p>
-        </div>
       </div>
     </div>
   );

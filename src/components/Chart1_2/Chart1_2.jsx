@@ -40,7 +40,7 @@ const Chart1_2 = () => {
     ],
   };
 
-  const yDomain = [-6000, 6000]; // Ensure the Y-axis range is consistent across all charts
+  const yDomain = [-6000, 6000]; // Y축 범위 설정
 
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", gap: "80px" }}>
@@ -76,9 +76,9 @@ const Chart1_2 = () => {
                     interval={0} 
                   />
                   <YAxis 
-                    // domain={yDomain} // Apply consistent domain
+                    domain={yDomain} // yDomain 적용
                     label={{ value: "Character Count", angle: -90, position: "insideLeft", fontSize: 12, fontWeight: "bold" }} 
-                    tickFormatter={(tick) => Math.abs(tick)} // Display positive labels only
+                    tickFormatter={(tick) => Math.abs(tick)}
                     tick={{ fontSize: 11 }}
                   />
                   <Tooltip contentStyle={{ fontSize: "10px" }} />

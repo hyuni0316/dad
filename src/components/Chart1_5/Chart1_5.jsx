@@ -94,13 +94,13 @@ const Chart1_5 = () => {
       <div style={{ width: "800px", marginBottom: "20px", marginLeft: "-200px" }}>
         <BarChart
           width={1000}
-          height={500}
+          height={600}
           data={percentageData}
           margin={{
             top: 20,
             right: 30,
             left: 20,
-            bottom: 100
+            bottom: 20
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -114,18 +114,21 @@ const Chart1_5 = () => {
           />
           <YAxis 
             tick={{ fontSize: 12 }}
-            label={{ value: '비율 (%)', angle: -90, position: 'insideLeft', offset: 0 }}
+            label={{ value: 'ratio (%)', angle: -90, position: 'insideLeft', offset: 0 }}
             domain={[0, 35]}
           />
           <Tooltip formatter={(value) => [`${value}%`, ""]} />
-          <Legend />
+          <Legend 
+            verticalAlign="bottom" 
+            wrapperStyle={{ paddingTop: "70px" }}
+          />
           <Bar dataKey="Best" fill="#63B594" name="Best" /> 
           <Bar dataKey="Normal" fill="#CECE73" name="Normal" />
           <Bar dataKey="Worst" fill="#B584D1" name="Worst" />
         </BarChart>
       </div>
 
-      <div className="detail-text">
+      {/* <div className="detail-text">
         <div className="insight-section">
           <strong>✔️ Best Scenario:</strong>
           <p> The use of Specific Questions is most frequent in this scenario, playing a crucial role in the success of the interview. 
@@ -148,11 +151,11 @@ const Chart1_5 = () => {
         <div className="key-insight">
           <strong>📌 Key Insights:</strong>
           <p>
-            •  Specific Questions and Context Understanding are pivotal skills across all scenarios.
-            <br/><br/>
-            • The use of Professional Terminology and Topic Transition is relatively infrequent in all scenarios.</p>
+            Specific Questions and Context Understanding are pivotal skills across all scenarios, 
+            while the use of Professional Terminology and Topic Transition remains relatively infrequent in all scenarios.
+          </p>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

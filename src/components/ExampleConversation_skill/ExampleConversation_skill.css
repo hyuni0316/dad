@@ -1,0 +1,94 @@
+/* ExampleConversation_skill.css */
+.conversations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.conversation-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.conversation-title {
+  color: #666666;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.example-content {
+  width: auto;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: 1rem;
+  border-radius: 15px;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: fit-content;
+}
+
+.interviewer {
+  justify-content: flex-start;
+}
+
+.interviewee {
+  justify-content: flex-end;
+}
+
+.interviewer .message-bubble {
+  background: #e3f2fd;
+  border-bottom-left-radius: 5px;
+}
+
+.interviewee .message-bubble {
+  background: #fff1f1;
+  border-bottom-right-radius: 5px;
+}
+
+.example-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.example-text {
+  word-break: break-word;
+  display: block;
+  max-width: 100%;
+}
+
+.conversation-description {
+  color: #888888;
+  margin: -1.5rem 0 2rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}

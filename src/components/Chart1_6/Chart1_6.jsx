@@ -15,7 +15,7 @@ const Chart1_6 = () => {
   const data = [
     {
       response: "Indifferent Response",
-      Best: (35 / getTotalResponses("Best") * 100).toFixed(1),
+      Best: (20 / getTotalResponses("Best") * 100).toFixed(1),
       Normal: (14 / getTotalResponses("Normal") * 100).toFixed(1),
       Worst: (9 / getTotalResponses("Worst") * 100).toFixed(1)
     },
@@ -27,7 +27,7 @@ const Chart1_6 = () => {
     },
     {
       response: "Example-Providing Response",
-      Best: (14 / getTotalResponses("Best") * 100).toFixed(1),
+      Best: (50 / getTotalResponses("Best") * 100).toFixed(1),
       Normal: (22 / getTotalResponses("Normal") * 100).toFixed(1),
       Worst: (31 / getTotalResponses("Worst") * 100).toFixed(1)
     },
@@ -62,13 +62,13 @@ const Chart1_6 = () => {
       <div style={{ width: "800px", marginBottom: "20px", marginLeft: "-110px" }}>
         <BarChart
           width={900}
-          height={500}
+          height={600}
           data={data}
           margin={{
             top: 20,
             right: 30,
             left: 20,
-            bottom: 100
+            bottom: 50
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -82,11 +82,14 @@ const Chart1_6 = () => {
           />
           <YAxis 
             tick={{ fontSize: 12 }}
-            label={{ value: '비율 (%)', angle: -90, position: 'insideLeft', offset: 0 }}
+            label={{ value: 'ratio (%)', angle: -90, position: 'insideLeft', offset: 0 }}
             domain={[0, 40]}
           />
           <Tooltip formatter={(value) => [`${value}%`, ""]} />
-          <Legend />
+          <Legend 
+            verticalAlign="bottom" 
+            wrapperStyle={{ paddingTop: "50px" }}
+          />
           <Bar dataKey="Best" fill="#63B594" name="Best" /> 
           <Bar dataKey="Normal" fill="#CECE73" name="Normal" />
           <Bar dataKey="Worst" fill="#B584D1" name="Worst" />
@@ -95,37 +98,30 @@ const Chart1_6 = () => {
 
       <div className="detail-text">
         <div className="insight-section">
-          <strong>✔️ Best Scenario:  </strong>
-          <p>Passive Response (36.2%) and Information-Providing Response (31.4%) account for the highest proportions 
-            of all responses. Receptive Response (17.6%) are also relatively more frequent compared to other scenarios, 
-            suggesting a more engaged and collaborative tone overall.</p>
+          <strong>✔️ Interviewee Skill Distribution</strong>
+          <p>
+            The use of specific questions, context understanding, and active listening was most frequent across all scenarios. In the best scenario, the proportions of emotional support, follow-up questions, and polite greetings were notably higher compared to other scenarios.
+          </p>
         </div>
 
         <div className="insight-section">
-          <strong>✔️  Normal Scenario : </strong>
-          <p>Passive Response (33.8%) and Information-Providing Response (31.3%) appear at similar levels, 
-            with an increase in Example-Providing Response (11.3%), indicating a slightly broader range of response types and situational detail.</p>
-        </div>
-
-        <div className="insight-section">
-          <strong>✔️  Worst Scenario : </strong>
-          <p>Information-Providing Response (38.5%) dominate, followed by Passive Response (26%) 
-            and Example-Providing Response (15.5%). The proportions of response types are more distinct in this scenario compared to the others, 
-            highlighting a more polarized reaction pattern.</p>
+          <strong>✔️ Interviewee Response Distribution</strong>
+          <p>
+            Passive responses and information-providing responses accounted for the largest proportions of all responses. In the best scenario, receptive responses were relatively more frequent compared to other scenarios.
+          </p>
         </div>
 
         <div className="key-insight">
           <strong>📌 Key Insights:</strong>
           <p>
-            • Across all scenarios, Passive Response and Information-Providing Response consistently represent the majority of responses. 
-            <br/><br/>
-            • The Best Scenario stands out with a relatively higher proportion of Receptive Response, indicating a more open and positive engagement.
-            <br/><br/>
-            • In the Worst Scenario, there is a noticeable increase in Example-Providing Response, reflecting a tendency for interviewees 
-              to illustrate their points with more situational context.
-            <br/><br/>
-            • Proactive Response and Critical Response remain low across all scenarios, suggesting these response types 
-              are less characteristic in the given contexts.</p>
+            The interviewer’s skill usage underscores the importance of fostering a supportive and engaging 
+            atmosphere to elicit more positive and interactive responses. 
+            While there were slight differences across scenarios, the overall distributions were notably 
+            similar. This could be attributed to the small sample size or the fact that 
+            both interviewer skill types and interviewee response types were automatically 
+            categorized and extracted using LLMs. These findings highlight the need for further research 
+            to refine and improve the methods of categorizing and classifying these types more effectively.
+          </p>
         </div>
       </div>
 

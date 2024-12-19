@@ -1,217 +1,334 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef, useEffect } from 'react';
 
 const categorizeWord = (word) => {
-  const serviceWords = ['토스', '앱/어플', '뱅크샐러드', '서비스', 'UI'];
-  const bankWords = ['은행', '계좌', '이체', '계정'];
-  const financeWords = ['투자', '자산', '펀드', '수익', '증권', '장학금', '금융', '지원', '혜택', '포인트', '결제'];
-  const cardWords = ['카드', '보험', '대출', '상품', '광고', '활동'];
-  const infoWords = ['정보', '확인', '관리', '알림', '휴대폰', '경험'];
-  const moneyWords = ['돈', '금액'];
-  const adverbWords = ['그냥', '이제', '되게', '근데', '좀', '그래서', '많이', '쓰다', '생각'];
+  const serviceWords = ['Toss', 'App', 'BankSalad', 'Service', 'UI', 'Notification', 'Phone', 'Experience', 'Information'];
+  const bankWords = ['Bank', 'Account', 'Transfer', 'Profile', 'Card', 'Insurance', 'Loan', 'Product', 'Advertisement'];
+  const financeWords = ['Investment', 'Asset', 'Fund', 'Return', 'Securities', 'Scholarship', 'Finance', 'Support', 'Benefit', 'Point', 'Payment', 'Money', 'Amount'];
+  const adverbWords = ['Check', 'Activity', 'Management', 'Just', 'Now', 'Very', 'But', 'Little', 'So', 'Many', 'Use', 'Think'];
 
-  if (serviceWords.includes(word)) return '#FF6B6B';  // 빨간색
-  if (bankWords.includes(word)) return '#4ECDC4';     // 청록색
-  if (financeWords.includes(word)) return '#45B7D1';  // 파란색
-  if (cardWords.includes(word)) return '#96CEB4';     // 초록색
-  if (infoWords.includes(word)) return '#D87BCF';     // 노란색
-  if (moneyWords.includes(word)) return '#D4A5A5';    // 분홍색
-  if (adverbWords.includes(word)) return '#9A9EAB';   // 회색
-  return '#000000';  // 기본 검정색
-}
+  if (serviceWords.includes(word)) return '#E84DA5';
+  if (bankWords.includes(word)) return '#A9AE22';
+  if (financeWords.includes(word)) return '#2E94D8';
+  if (adverbWords.includes(word)) return '#9A9EAB';
+  return '#000000';
+};
 
-const WordDisplay = ({ words, title }) => {
-  const [tooltip, setTooltip] = useState({ show: false, text: '', x: 0, y: 0 });
+const WordDisplay = ({ words, selectedCategories }) => {
+  const [tooltip, setTooltip] = useState({ show: false, text: '', word: '', x: 0, y: 0 });
+  const wordRefs = useRef({});
 
-  const handleMouseEnter = (e, word, count) => {
-    const rect = e.target.getBoundingClientRect();
-    setTooltip({
-      show: true,
-      text: `${word}: ${count}회`,
-      x: rect.left + (rect.width / 2),
-      y: rect.top
-    });
+  const handleMouseEnter = (word, count) => {
+    const wordEl = wordRefs.current[word];
+    if (wordEl) {
+      const rect = wordEl.getBoundingClientRect();
+      setTooltip({
+        show: true,
+        text: `${count}`,
+        word: word,
+        x: rect.left + (rect.width / 2),
+        y: rect.top
+      });
+    }
   };
 
   const handleMouseLeave = () => {
-    setTooltip({ show: false, text: '', x: 0, y: 0 });
-  };
-
-  const handleMouseMove = (e) => {
-    if (tooltip.show) {
-      const rect = e.target.getBoundingClientRect();
-      setTooltip(prev => ({
-        ...prev,
-        x: rect.left + (rect.width / 2),
-        y: rect.top + 150
-      }));
-    }
+    setTooltip({ show: false, text: '', word: '', x: 0, y: 0 });
   };
 
   return (
     <div className="wordcloud-section">
-      <h3>{title}</h3>
-      <div className="wordcloud">
+      <div className="wordcloud" style={{ 
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'repeat(20, 1fr)',
+      }}>
         {words.map(([word, count], index) => {
-          const fontSize = Math.max(12, Math.min(48, count * 0.8));
+          const wordCategory = categorizeWord(word);
+          const fontSize = Math.max(12, Math.min(36, count * 0.8));
+          
+          const shouldDisplay = selectedCategories.length === 0 || selectedCategories.includes(wordCategory);
+          
           return (
             <span
               key={index}
+              ref={el => wordRefs.current[word] = el}
               style={{
                 fontSize: `${fontSize}px`,
                 color: categorizeWord(word),
-                margin: '5px',
-                display: 'inline-block',
-                transition: 'all 0.3s ease',
-                cursor: 'default'
+                display: shouldDisplay ? 'flex' : 'none',
+                justifyContent: 'center',
+                alignItems: 'center',
+                cursor: 'default',
+                position: 'relative',
+                padding: '1rem',
+                // width: '100%',
+                height: '30px',
+                opacity: shouldDisplay ? 1 : 0.3,
+                transition: 'opacity 0.3s ease',
+
               }}
-              onMouseEnter={(e) => handleMouseEnter(e, word, count)}
+              onMouseEnter={() => handleMouseEnter(word, count)}
               onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
             >
               {word}
+              {tooltip.show && tooltip.word === word && (
+                <div 
+                  className="tooltip show"
+                  style={{
+                    position: 'absolute',
+                    bottom: '71%',
+                    transform: 'translateX(-50%)',
+                    marginBottom: '0px',
+                    textAlign: 'center',
+                    fontSize: '20px'
+                  }}
+                >
+                  {tooltip.text}
+                </div>
+              )}
             </span>
           );
         })}
       </div>
-      {tooltip.show && (
-        <div 
-          className={`tooltip ${tooltip.show ? 'show' : ''}`}
-          style={{
-            left: `${tooltip.x}px`,
-            top: `${tooltip.y}px`,
-            transform: 'translate(-50%, -100%)',
-            position: 'fixed',
-            pointerEvents: 'none'
-          }}
-        >
-          {tooltip.text}
-        </div>
-      )}
     </div>
   );
 };
 
-WordDisplay.propTypes = {
-  words: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]))).isRequired,
-  title: PropTypes.string.isRequired
-};
-
 const Chart1_11 = () => {
+  const containerRef = useRef(null);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   const bestWords = [
-    ['토스', 52],
-    ['은행', 45],
-    ['앱/어플', 43],
-    ['계좌', 41],
-    ['정보', 38],
-    ['돈', 35],
-    ['투자', 33],
-    ['자산', 31],
-    ['뱅크샐러드', 29],
-    ['카드', 28],
-    ['확인', 27],
-    ['펀드', 25],
-    ['보험', 24],
-    ['금액', 23],
-    ['수익', 21],
-    ['이체', 20],
-    ['대출', 19],
-    ['관리', 18],
-    ['증권', 17],
-    ['상품', 16]
+    ['Toss', 52],
+    ['Bank', 45],
+    ['App', 43],
+    ['Account', 41],
+    ['Information', 38],
+    ['Money', 35],
+    ['Investment', 33],
+    ['Asset', 31],
+    ['BankSalad', 29],
+    ['Card', 28],
+    ['Check', 27],
+    ['Fund', 25],
+    ['Insurance', 24],
+    ['Amount', 23],
+    ['Return', 21],
+    ['Transfer', 20],
+    ['Loan', 19],
+    ['Management', 18],
+    ['Securities', 17],
+    ['Product', 16]
   ];
 
   const normalWords = [
-    ['토스', 48],
-    ['은행', 42],
-    ['돈', 39],
-    ['앱/어플', 37],
-    ['카드', 34],
-    ['활동', 31],
-    ['계좌', 29],
-    ['정보', 25],
-    ['경험', 23],
-    ['이체', 20],
-    ['장학금', 19],
-    ['금융', 18],
-    ['생각', 17],
-    ['지원', 16],
-    ['혜택', 15],
-    ['확인', 14],
-    ['알림', 13],
-    ['계정', 12],
-    ['서비스', 11],
-    ['휴대폰', 10]
+    ['Toss', 48],
+    ['Bank', 42],
+    ['Money', 39],
+    ['App', 37],
+    ['Card', 34],
+    ['Activity', 31],
+    ['Account', 29],
+    ['Information', 25],
+    ['Experience', 23],
+    ['Transfer', 20],
+    ['Scholarship', 19],
+    ['Finance', 18],
+    ['Think', 17],
+    ['Support', 16],
+    ['Benefit', 15],
+    ['Check', 14],
+    ['Notification', 13],
+    ['Profile', 12],
+    ['Service', 11],
+    ['Phone', 10]
   ];
 
   const worstWords = [
-    ['토스', 67],
-    ['은행', 55],
-    ['앱/어플', 51],
-    ['그냥', 48],
-    ['이제', 43],
-    ['포인트', 41],
-    ['되게', 38],
-    ['근데', 36],
-    ['돈', 34],
-    ['카드', 32],
-    ['좀', 31],
-    ['그래서', 29],
-    ['생각', 25],
-    ['많이', 24],
+    ['Toss', 67],
+    ['Bank', 55],
+    ['App', 51],
+    ['Just', 48],
+    ['Now', 43],
+    ['Point', 41],
+    ['Very', 38],
+    ['But', 36],
+    ['Money', 34],
+    ['Card', 32],
+    ['Little', 31],
+    ['So', 29],
+    ['Think', 25],
+    ['Many', 24],
     ['UI', 22],
-    ['광고', 20],
-    ['계좌', 19],
-    ['혜택', 18],
-    ['결제', 17],
-    ['쓰다', 16]
+    ['Advertisement', 20],
+    ['Account', 19],
+    ['Benefit', 18],
+    ['Payment', 17],
+    ['Use', 16]
   ];
 
+  const handleCategoryClick = (color) => {
+    setSelectedCategories(prev => {
+      if (prev.includes(color)) {
+        return prev.filter(c => c !== color);
+      } else {
+        return [...prev, color];
+      }
+    });
+  };
+
   return (
-    <div>
-      <div className="chart-container">
-        <WordDisplay words={bestWords} title="Best" />
-        <WordDisplay words={normalWords} title="Normal" />
-        <WordDisplay words={worstWords} title="Worst" />
+    <div className="chart-container11" ref={containerRef}>
+      <div className="word-category-legend" style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        maxWidth: '800px',
+        margin: '0 auto 2rem auto',
+        padding: '1rem',
+        borderRadius: '8px'
+      }}>
+        <h3 style={{ marginBottom: '1rem', textAlign: 'center' }}>Top 20 Most Frequent Words</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center'}}>
+          <div 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '5px',
+              cursor: 'pointer',
+              opacity: selectedCategories.includes('#E84DA5') || selectedCategories.length === 0 ? 1 : 0.5,
+            }}
+            onClick={() => handleCategoryClick('#E84DA5')}
+          >
+            <span style={{ width: '12px', height: '12px', backgroundColor: '#E84DA5', display: 'inline-block', borderRadius: '50%' }}></span>
+            <span>Service Related: Toss, App, BankSalad, etc.</span>
+          </div>
+          <div 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '5px',
+              cursor: 'pointer',
+              opacity: selectedCategories.includes('#A9AE22') || selectedCategories.length === 0 ? 1 : 0.5,
+            }}
+            onClick={() => handleCategoryClick('#A9AE22')}
+          >
+            <span style={{ width: '12px', height: '12px', backgroundColor: '#A9AE22', display: 'inline-block', borderRadius: '50%' }}></span>
+            <span>Bank Related: Bank, Account, Transfer, Card, Insurance, Loan, etc.</span>
+          </div>
+          <div 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '5px',
+              cursor: 'pointer',
+              opacity: selectedCategories.includes('#2E94D8') || selectedCategories.length === 0 ? 1 : 0.5,
+            }}
+            onClick={() => handleCategoryClick('#2E94D8')}
+          >
+            <span style={{ width: '12px', height: '12px', backgroundColor: '#2E94D8', display: 'inline-block', borderRadius: '50%' }}></span>
+            <span>Finance Related: Investment, Asset, Money, etc.</span>
+          </div>
+          <div 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '5px',
+              cursor: 'pointer',
+              opacity: selectedCategories.includes('#9A9EAB') || selectedCategories.length === 0 ? 1 : 0.5,
+            }}
+            onClick={() => handleCategoryClick('#9A9EAB')}
+          >
+            <span style={{ width: '12px', height: '12px', backgroundColor: '#9A9EAB', display: 'inline-block', borderRadius: '50%' }}></span>
+            <span>Adverbs/Others: Just, Now, Very, etc.</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="wordclouds-wrapper" style={{ 
+        display: 'flex', 
+        flexDirection: 'row', 
+        gap: '150px',
+        padding: '2rem',
+        justifyContent: 'center'
+      }}>
+        <div className="wordcloud-section">
+          <div className="wordcloud-title" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.5rem', fontWeight: '600', paddingBottom: '1rem', textAlign: 'center', width: '100%', margin: '1rem 0' }}>Best</div>
+          <WordDisplay words={bestWords} selectedCategories={selectedCategories} />
+        </div>
+        <div className="wordcloud-section">
+          <div className="wordcloud-title" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.5rem', fontWeight: '600', paddingBottom: '1rem', textAlign: 'center', width: '100%', margin: '1rem 0' }}>Normal</div>
+          <WordDisplay words={normalWords} selectedCategories={selectedCategories} />
+        </div>
+        <div className="wordcloud-section">
+          <div className="wordcloud-title" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.5rem', fontWeight: '600', paddingBottom: '1rem', textAlign: 'center', width: '100%', margin: '1rem 0' }}>Worst</div>
+          <WordDisplay words={worstWords} selectedCategories={selectedCategories} />
+        </div>
       </div>
 
       <div className="detail-text">
         <div className="insight-section">
-          <strong>✔️ Characteristics of the Best Interviews:</strong>
+          <strong>✔️ Characteristics of the Best Interviews</strong>
           <p>
-            Best interviews contain a wealth of specific details and actionable insights. 
-            Responses often include numerical data, real-world experiences, and professionally structured content. 
-            They provide detailed, replicable explanations and exhibit a high level of information value.</p>
+            Best interviews are characterized by the frequent use of specialized and precise financial terminology, 
+            including terms related to investments, funds, and securities, ensuring clarity and professionalism. 
+            Additionally, unnecessary words or fillers are rarely present, maintaining a concise and focused dialogue.
+          </p>
         </div>
 
         <div className="insight-section">
           <strong>✔️ Characteristics of the Normal Interviews:</strong>
-          <p>Normal interviews offer practical information at a general level. 
-            Responses reflect typical financial activities, basic app usage experiences, and insights from a college student's perspective. 
-            The information value is moderate, providing useful but not highly detailed insights.</p>
+          <p>
+            Normal interviews incorporate more common financial terms and include vocabulary related to the 
+            interviewee's background, such as student-specific references, 
+            creating a casual yet contextually relevant tone.
+          </p>
         </div>
 
         <div className="insight-section">
-          <strong>✔️ Characteristics of the Worst Interviews:</strong>
-          <p>Worst interviews are dominated by superficial descriptions with very limited specific information. 
-            Responses lack depth and focus more on subjective opinions rather than practical details. 
-            The information value is low, offering minimal actionable or insightful content.</p>
+          <strong>✔️ Characteristics of the Worst Interviews</strong>
+          <p>
+          The worst interviews feature a high frequency of unnecessary adverbs and fillers, such as 
+          "just," "now," and "really," which dilute the clarity and professionalism of the responses.
+          </p>
         </div>
 
         <div className="key-insight">
-          <strong>📌 Key Insights:</strong>
-          <p>The quality of information, particularly specificity, practicality, and actionable details, 
-            appears to be a major determinant of interview ratings. Best interviews excel in these aspects, 
-            while normal and worst interviews show diminishing levels of information richness.</p>
+          <strong>📌 Key Insights</strong>
+          <p>
+          The analysis of the top 20 most frequent words reveals key patterns across scenarios. 
+          In the worst scenarios, excessive use of filler words and vague terms dominates, 
+          contrasting with the concise and precise language seen in the best scenarios. 
+          These findings indicate that a higher frequency of such unnecessary words could 
+          serve as a strong indicator of a less effective interview scenario.
+          </p>
         </div>
       </div>
-
-
     </div>
-    
   );
 };
 

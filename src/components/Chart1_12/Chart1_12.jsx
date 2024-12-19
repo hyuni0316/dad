@@ -1,7 +1,34 @@
-import React from 'react';
+// Chart1_12.jsx
+import React, { useEffect, useRef } from 'react';
 import './Chart1_12.css';
 
 const Chart1_12 = () => {
+  const containerRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   const interviews = [
     {
       type: 'Best',
@@ -15,7 +42,7 @@ const Chart1_12 = () => {
         'Banksalad Usage',
         'Loan/Insurance Management',
         'Real Estate/Vehicle Assets',
-        'Information Gathering Methods'
+        'Information Gathering'
       ],
       className: 'best'
     },
@@ -40,27 +67,27 @@ const Chart1_12 = () => {
       type: 'Worst',
       name: 'Seol',
       topics: [
-        'Personal Introduction',
-        'Financial Life (Break: Restroom)',
-        'Toss App Usage',
-        'Banking App Comparison',
-        'Card Usage',
-        'Back to Toss App',
-        'Points/Benefits',
-        'Banking Apps Revisited',
-        'Information Gathering',
-        'Toss Features Again',
-        'Ad Blocking App',
-        'Points Again',
-        'Company Environment'
+        { text: 'Personal Introduction', isRepeated: false },
+        { text: 'Financial Life (Break: Restroom)', isRepeated: false },
+        { text: 'Toss App Usage', isRepeated: true },
+        { text: 'Banking App Comparison', isRepeated: true },
+        { text: 'Card Usage', isRepeated: false },
+        { text: 'Back to Toss App', isRepeated: true },
+        { text: 'Points/Benefits', isRepeated: true },
+        { text: 'Banking Apps Revisited', isRepeated: true },
+        { text: 'Information Gathering', isRepeated: false },
+        { text: 'Toss Features Again', isRepeated: true },
+        { text: 'Ad Blocking App', isRepeated: false },
+        { text: 'Points Again', isRepeated: true },
+        { text: 'Company Environment', isRepeated: false }
       ],
       className: 'worst'
     }
   ];
 
   return (
-    <div className="chart-container">
-      <h2>Topic Transition Flow Analysis</h2>
+    <div className="chart-container12" ref={containerRef}>
+      <h2 style={{ textAlign: 'center' }}>Topic Transition Flow</h2>
       
       <div className="flow-comparison">
         {interviews.map((interview, idx) => (
@@ -69,11 +96,19 @@ const Chart1_12 = () => {
             <div className="flow-items">
               {interview.topics.map((topic, topicIdx) => (
                 <React.Fragment key={topicIdx}>
-                  <div className={`flow-item ${interview.className}`}>
-                    {topic}
+                  <div 
+                    className={`flow-item ${interview.className} ${topic.isRepeated ? 'repeated' : ''}`}
+                    style={{ animationDelay: `${0.2 + (topicIdx * 0.2)}s` }}
+                  >
+                    {typeof topic === 'string' ? topic : topic.text}
                   </div>
                   {topicIdx < interview.topics.length - 1 && (
-                    <div className="arrow">↓</div>
+                    <div 
+                      className="arrow"
+                      style={{ animationDelay: `${0.3 + (topicIdx * 0.2)}s` }}
+                    >
+                      ↓
+                    </div>
                   )}
                 </React.Fragment>
               ))}
@@ -84,29 +119,35 @@ const Chart1_12 = () => {
 
       <div className="detail-text">
         <div className="insight-section">
-          <strong>✔️ Transition Frequency Analysis:</strong>
+          <strong>✔️ Transition Frequency Analysis</strong>
           <p>
-            • Best: 9 transitions showing optimal flow with in-depth topic exploration<br/>
-            • Normal: 10 transitions with adequate frequency but lacking depth<br/>
-            • Worst: 13 transitions with frequent repetition showing inefficient flow
+            The analysis reveals distinct patterns across interview quality levels. 
+            The Best interview demonstrates optimal efficiency with 9 transitions, each characterized by thorough topic exploration and meaningful depth. 
+            The Normal interview shows acceptable progression with 10 transitions. 
+            The Worst interview exhibits inefficient flow with 13 transitions, marked by unnecessary repetition and superficial coverage of topics.
           </p>
         </div>
 
         <div className="insight-section">
-          <strong>✔️ Transition Pattern Characteristics:</strong>
+          <strong>✔️ Transition Pattern </strong>
           <p>
-            • Best: Logical sequence with clear connections between topics<br/>
-            • Normal: Generally sequential with occasional skip patterns<br/>
-            • Worst: Frequent topic repetition and sudden transitions lacking consistency
+            Each interview type displays unique transitional characteristics.
+            The Best interview maintains a coherent narrative with seamlessly connected topics, 
+            demonstrating strategic planning and purposeful progression. 
+            The worst interviews are marked by disjointed transitions, frequent backtracking,
+             interruptions, and a lack of strategic direction in topic management.
           </p>
         </div>
 
         <div className="key-insight">
           <strong>📌 Key Insights:</strong>
           <p>
-            • Effective interviews prioritize topic connectivity and depth over transition frequency<br/>
-            • Systematic topic transitions are crucial in determining interview quality<br/>
-            • Repetitive topic revisits significantly reduce interview efficiency
+            Effective interviews demonstrate a clear focus on topic connectivity and depth, 
+            while maintaining systematic progression between subjects. 
+            This approach, combined with avoiding repetitive topic revisits, 
+            significantly enhances interview efficiency and the overall quality of the conversation. 
+            In other words, frequent backtracking to the same topic can serve as 
+            a signal of a poorly conducted interview.
           </p>
         </div>
       </div>
@@ -114,4 +155,4 @@ const Chart1_12 = () => {
   );
 };
 
-export default Chart1_12; 
+export default Chart1_12;

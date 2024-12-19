@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { useState, useEffect, useRef } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Legend } from 'recharts';
 import './Chart1_13.css';
 import PropTypes from 'prop-types';
 
@@ -32,6 +32,54 @@ CustomTooltip.propTypes = {
 };
 
 const Chart1_13 = () => {
+  const containerRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  const formatInterviewerData = (data) => {
+    return data.flatMap(item => [
+      { name: `${item.name} Total`, value: item.total, category: item.name },
+      ...item.details.map(detail => ({
+        name: detail.question,
+        value: detail.count,
+        category: item.name
+      }))
+    ]);
+  };
+
+  const formatIntervieweeData = (data) => {
+    return data.flatMap(item => [
+      { name: `${item.name} Total`, value: item.total, category: item.name },
+      ...item.details.map(detail => ({
+        name: detail.response,
+        value: detail.count,
+        category: item.name
+      }))
+    ]);
+  };
+
   const [interviewerData] = useState([
     { 
       name: 'Best', 
@@ -101,23 +149,43 @@ const Chart1_13 = () => {
     }
   ]);
 
+  const formattedInterviewerData = formatInterviewerData(interviewerData);
+  const formattedIntervieweeData = formatIntervieweeData(intervieweeData);
+
+  const getBarColor = (category) => {
+    return category === 'Best' ? '#63B594' 
+         : category === 'Normal' ? '#CECE73' 
+         : '#B584D1';
+  };
+
   return (
-    <div className="chart-container">
-      
+    <div className="chart-container13" ref={containerRef}>
       <div className="charts-wrapper">
         <div className="chart">
-          <h3>Interviewer Questions Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={interviewerData}>
+          <h3>Repeated Interviewer Questions Distribution</h3>
+          <ResponsiveContainer width="100%" height={600}>
+            <BarChart data={formattedInterviewerData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip content={<CustomTooltip type="interviewer" />} />
-              <Bar dataKey="total">
-                {interviewerData.map((entry, index) => (
+              <XAxis type="number" domain={[0, 50]} />
+              <YAxis 
+                type="category" 
+                dataKey="name" 
+                width={150} 
+                style={{ fontSize: '12px' }}
+              />
+              <Tooltip />
+              <Legend 
+                payload={[
+                  { value: 'Best', type: 'rect', color: '#63B594' },
+                  { value: 'Normal', type: 'rect', color: '#CECE73' },
+                  { value: 'Worst', type: 'rect', color: '#B584D1' }
+                ]}
+              />
+              <Bar dataKey="value" barSize={15}>
+                {formattedInterviewerData.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`}
-                    fill={entry.name === 'Best' ? '#63B594' : entry.name === 'Normal' ? '#CECE73' : '#B584D1'}
+                    fill={getBarColor(entry.category)}
                   />
                 ))}
               </Bar>
@@ -126,18 +194,30 @@ const Chart1_13 = () => {
         </div>
 
         <div className="chart">
-          <h3>Interviewee Responses Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={intervieweeData}>
+          <h3>Repeated Interviewee Responses Distribution</h3>
+          <ResponsiveContainer width="100%" height={600}>
+            <BarChart data={formattedIntervieweeData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip content={<CustomTooltip type="interviewee" />} />
-              <Bar dataKey="total">
-                {intervieweeData.map((entry, index) => (
+              <XAxis type="number" domain={[0, 50]} />
+              <YAxis 
+                type="category" 
+                dataKey="name" 
+                width={200} 
+                style={{ fontSize: '12px' }}
+              />
+              <Tooltip />
+              <Legend 
+                payload={[
+                  { value: 'Best', type: 'rect', color: '#63B594' },
+                  { value: 'Normal', type: 'rect', color: '#CECE73' },
+                  { value: 'Worst', type: 'rect', color: '#B584D1' }
+                ]}
+              />
+              <Bar dataKey="value" barSize={15}>
+                {formattedIntervieweeData.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`}
-                    fill={entry.name === 'Best' ? '#63B594' : entry.name === 'Normal' ? '#CECE73' : '#B584D1'}
+                    fill={getBarColor(entry.category)}
                   />
                 ))}
               </Bar>
@@ -150,29 +230,33 @@ const Chart1_13 = () => {
         <div className="insight-section">
           <strong>✔️ Interview Question Pattern Analysis:</strong>
           <p>
-            • Best interview: Efficient information collection with minimal repetition (6 times) <br />
-            • Normal interview: Basic information gathering with moderate repetition (10 times) <br />
-            • Worst interview: Inefficient questioning pattern with excessive repetition (21 times) <br />
+            The analysis of questioning patterns revealed distinct differences in interviewing efficiency, 
+            where the Best interviews demonstrated optimal information collection with only 6 repetitions, 
+            while Normal interviews showed moderate efficiency with 10 repetitions in basic information gathering, 
+            and Worst interviews exhibited an inefficient pattern with excessive repetition occurring 21 times, 
+            indicating a significant decline in questioning effectiveness.
           </p>
         </div>
 
         <div className="insight-section">
           <strong>✔️ Interviewee Response Pattern Analysis: </strong>
           <p>
-            • Best interview: 9 repetitions with new context and additional information <br />
-            • Normal interview: 12 repetitions with adequate basic information delivery <br />
-            • Worst interview: 45 repetitions expressing same content in different ways <br />
+            The response patterns varied significantly across interview quality levels, 
+            with the Best interviews showing 9 meaningful repetitions that provided new context and additional information, 
+            while Normal interviews had 12 repetitions delivering adequate basic information, 
+            and Worst interviews demonstrated inefficiency with 45 repetitions 
+            that merely expressed the same content in different ways without adding substantial value.
           </p>
         </div>
 
         <div className="key-insight">
           <strong>📌 Key Insights:</strong>
           <p>
-            1. Question-Response Ratio: Best interview (1:1.5), Normal interview (1:1.2), Worst interview (1:2.1) showing Best interview has the most efficient information exchange ratio
-            <br />
-            2. Topic Focus: Best interview focused on core topics of asset management and app usage, while Worst interview overly focused on Toss-related questions
-            <br />
-            3. Response Quality: Best interview responses feature additional context, while Worst interview mostly contains simple repetitions
+            In effective interviews, minimizing repetitive questions is crucial. 
+            Each question should build upon the interviewee&apos;s previous answers, fostering a sense of progression and depth in the conversation. <br/><br/>
+            Conversely, repetitive questioning, as observed in less effective interviews, can lead to redundant and less engaging interactions. 
+            Similarly, encouraging interviewees to add new context or details when repeating information can enhance the quality of their responses. 
+            By focusing on these strategies, interview design can create more meaningful and dynamic exchanges.
           </p>
         </div>
       </div>
