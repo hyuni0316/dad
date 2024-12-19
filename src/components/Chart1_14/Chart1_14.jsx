@@ -93,15 +93,21 @@ const Chart1_14 = () => {
 
   const formattedData = formatData(data);
 
-  const getBarColor = (category) => {
-    return category === 'Best' ? '#63B594' 
-         : category === 'Normal' ? '#CECE73' 
-         : '#B584D1';
+  const getBarColor = (category, isTotal) => {
+    if (isTotal) {
+      return category === 'Best' ? '#63B594' 
+           : category === 'Normal' ? '#CECE73' 
+           : '#B584D1';
+    } else {
+      return category === 'Best' ? '#A3D4C1' 
+           : category === 'Normal' ? '#E1E1A8' 
+           : '#D4B5E6';
+    }
   };
 
   return (
     <div className="chart-container14" ref={containerRef}>
-      <h3>Distribution of Interview Topics by Quality Level</h3>
+      <h3>The count of meaningful information contained in each scenario, categorized by specific subtopics</h3>
       
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height={600}>
@@ -126,7 +132,7 @@ const Chart1_14 = () => {
               {formattedData.map((entry, index) => (
                 <Cell 
                   key={`cell-${index}`}
-                  fill={getBarColor(entry.category)}
+                  fill={getBarColor(entry.category, entry.name.includes('Total'))}
                 />
               ))}
             </Bar>
@@ -136,30 +142,32 @@ const Chart1_14 = () => {
 
       <div className="detail-text">
         <div className="insight-section">
-          <strong>✔️ Best Interview Topics:</strong>
+          <strong>✔️ Best Interview Topics</strong>
           <p>
-            최상의 인터뷰는 총 37개의 주제를 다루며, 투자/자산관리(12), 금융앱/UX(10), 
-            정보수집 방법(8) 등 다양한 전문적인 주제들을 깊이 있게 다룹니다. 
-            특히 보안/신뢰성(4)과 개선제안(3)과 같은 고급 주제도 포함됩니다.
+            The best interviews yielded 37 meaningful pieces of information, with a strong focus on 
+            Investment/Asset Management (12) and Financial App/UX (10). The depth of discussion extended to 
+            Information Gathering Methods (8), Security/Reliability (4), and Improvement Suggestions (3), 
+            demonstrating a comprehensive understanding of financial management and technology.
           </p>
         </div>
 
         <div className="insight-section">
-          <strong>✔️ Normal & Worst Interview Topics:</strong>
+          <strong>✔️ Normal & Worst Interview Topics</strong>
           <p>
-            일반 인터뷰는 18개 주제로, 주로 금융앱/UX(8)와 결제/카드(6) 관련 기본적인 내용을 다룹니다.
-            최하위 인터뷰는 13개의 제한된 주제로, 수입/자금관리(5), 금융상품(4), 리워드/포인트(4)와 
-            같은 표면적인 내용에 머무릅니다.
+            Normal interviews produced 18 pieces of information, primarily centered around Financial App/UX (8) 
+            and Payment/Card Related topics (6), with basic coverage of Notifications (4). Worst interviews 
+            generated only 13 pieces of information, focusing on basic topics like Income Management (5), 
+            Financial Products (4), and Rewards/Points (4), lacking the depth seen in better interviews.
           </p>
         </div>
 
         <div className="key-insight">
-          <strong>📌 핵심 인사이트:</strong>
+          <strong>📌 Key Insights </strong>
           <p>
-            인터뷰 품질은 다루는 주제의 수와 깊이에서 명확한 차이를 보입니다. 
-            최상위 인터뷰는 일반 인터뷰의 2배, 최하위 인터뷰의 3배 가까운 주제를 다루며,
-            특히 전문적이고 심층적인 금융 관련 주제들을 포함한다는 특징이 있습니다.
-            이는 인터뷰 설계 시 다양하고 전문적인 주제를 포함하는 것이 중요함을 시사합니다.
+            The quality of interviews directly correlates with the breadth and depth of information gathered. 
+            Best interviews captured nearly triple the meaningful information compared to worst interviews, 
+            covering more sophisticated topics. This highlights the importance of well-structured questions 
+            and strategic topic management to maximize the value of interviews.
           </p>
         </div>
       </div>

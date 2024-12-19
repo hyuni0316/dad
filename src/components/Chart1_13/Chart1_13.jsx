@@ -152,10 +152,16 @@ const Chart1_13 = () => {
   const formattedInterviewerData = formatInterviewerData(interviewerData);
   const formattedIntervieweeData = formatIntervieweeData(intervieweeData);
 
-  const getBarColor = (category) => {
-    return category === 'Best' ? '#63B594' 
-         : category === 'Normal' ? '#CECE73' 
-         : '#B584D1';
+  const getBarColor = (category, isTotal) => {
+    if (isTotal) {
+      return category === 'Best' ? '#63B594' 
+           : category === 'Normal' ? '#CECE73' 
+           : '#B584D1';
+    } else {
+      return category === 'Best' ? '#A3D4C1' 
+           : category === 'Normal' ? '#E1E1A8' 
+           : '#D4B5E6';
+    }
   };
 
   return (
@@ -185,7 +191,7 @@ const Chart1_13 = () => {
                 {formattedInterviewerData.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`}
-                    fill={getBarColor(entry.category)}
+                    fill={getBarColor(entry.category, entry.name.includes('Total'))}
                   />
                 ))}
               </Bar>
@@ -217,7 +223,7 @@ const Chart1_13 = () => {
                 {formattedIntervieweeData.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`}
-                    fill={getBarColor(entry.category)}
+                    fill={getBarColor(entry.category, entry.name.includes('Total'))}
                   />
                 ))}
               </Bar>
@@ -228,7 +234,7 @@ const Chart1_13 = () => {
 
       <div className="detail-text">
         <div className="insight-section">
-          <strong>✔️ Interview Question Pattern Analysis:</strong>
+          <strong>✔️ Interview Question Pattern Analysis</strong>
           <p>
             The analysis of questioning patterns revealed distinct differences in interviewing efficiency, 
             where the Best interviews demonstrated optimal information collection with only 6 repetitions, 
@@ -239,24 +245,23 @@ const Chart1_13 = () => {
         </div>
 
         <div className="insight-section">
-          <strong>✔️ Interviewee Response Pattern Analysis: </strong>
+          <strong>✔️ Interviewee Response Pattern Analysis </strong>
           <p>
             The response patterns varied significantly across interview quality levels, 
-            with the Best interviews showing 9 meaningful repetitions that provided new context and additional information, 
-            while Normal interviews had 12 repetitions delivering adequate basic information, 
+            with the Best interviews showing 9 repetitions, 
+            while Normal interviews had 12 repetitions , 
             and Worst interviews demonstrated inefficiency with 45 repetitions 
             that merely expressed the same content in different ways without adding substantial value.
           </p>
         </div>
 
         <div className="key-insight">
-          <strong>📌 Key Insights:</strong>
+          <strong>📌 Key Insights</strong>
           <p>
-            In effective interviews, minimizing repetitive questions is crucial. 
-            Each question should build upon the interviewee&apos;s previous answers, fostering a sense of progression and depth in the conversation. <br/><br/>
-            Conversely, repetitive questioning, as observed in less effective interviews, can lead to redundant and less engaging interactions. 
-            Similarly, encouraging interviewees to add new context or details when repeating information can enhance the quality of their responses. 
-            By focusing on these strategies, interview design can create more meaningful and dynamic exchanges.
+            Effective interviews minimize unnecessary repetitions in both questions and responses, 
+            focusing on extracting meaningful and concise information. 
+            Excessive repetition, as seen in the worst interviews, is a clear indicator of reduced efficiency and quality. 
+            Avoiding redundant exchanges and maintaining a streamlined flow can significantly enhance the overall interview experience.
           </p>
         </div>
       </div>

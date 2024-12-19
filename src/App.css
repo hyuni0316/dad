@@ -150,8 +150,8 @@ body::-webkit-scrollbar {
 
 .page-change-content {
   font-size: clamp(0.9rem, 2vw, 1rem);
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 800px;
+  color: rgba(181, 181, 181, 0.8);
+  max-width: 900px;
   width: 100%;
   opacity: 0;
   transform: translateY(20px);

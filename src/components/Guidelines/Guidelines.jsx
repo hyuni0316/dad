@@ -32,7 +32,7 @@ const Guidelines = () => {
 
   return (
     <div className="dataset-description">
-      {/* 첫 번째 카드: 개요 */}
+      {/* First Card: Overview */}
       <div className="dataset-card-first-card fade-in" ref={(el) => (cardsRef.current[0] = el)}>
         <div className="dataset-title fade-in-text">Guidelines for a Successful Interview</div>
         <div className="dataset-content">
@@ -45,85 +45,79 @@ const Guidelines = () => {
         </div>
       </div>
 
-      {/* 두 번째 카드: Interview Design */}
+      {/* Second Card: Optimizing Conversation Patterns */}
       <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[1] = el)}>
-        <div className="dataset-subtitle fade-in-text">1. Interview Design</div>
+        <div className="dataset-subtitle fade-in-text">1. Optimizing Conversation Patterns</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
-              • <strong>Define Clear Objectives:</strong> Focus on extracting specific information such as user experiences, pain points, or improvement ideas.
+              • <strong>Concise Communication:</strong> Maintain brief and clear exchanges, avoiding prolonged monologues to keep the conversation dynamic and engaging.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Structured Flow:</strong> Divide the interview into an introduction (ice-breaking), main discussion (key scenarios), and conclusion.
+              • <strong>Professional Language:</strong> Utilize industry-appropriate terminology and precise expressions while minimizing unnecessary filler words.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Question Organization:</strong> Start with general questions, add follow-ups for depth, and incorporate scenario-specific questions.
+              • <strong>Balanced Dialogue:</strong> Ensure equal participation between interviewer and interviewee to create meaningful discourse.
             </p>
           </div>
         </div>
       </div>
 
-      {/* 세 번째 카드: Interviewer Role */}
+      {/* Third Card: Question Strategies */}
       <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[2] = el)}>
-        <div className="dataset-subtitle fade-in-text">2. Interviewer Role</div>
+        <div className="dataset-subtitle fade-in-text">2. Question Strategies</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
-              • <strong>Active Listening:</strong> Summarize and empathize with responses to encourage detailed answers.
+              • <strong>Specific Initial Questions:</strong> Start with focused inquiries to establish clear direction and understanding of the topic.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Focus on Clarity:</strong> Guide the conversation to avoid topic divergence while allowing flexibility.
+              • <strong>Strategic Follow-ups:</strong> Develop subsequent questions based on responses to explore topics in greater depth.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Engage with Follow-ups:</strong> Use questions like &quot;Why?&quot; or &quot;Can you elaborate?&quot; to explore deeper insights.
+              • <strong>Question Management:</strong> Avoid redundant questioning while ensuring comprehensive coverage of each topic.
+            </p>
+            <p className="attribute-text fade-in-text">
+              • <strong>Contextual Depth:</strong> Prepare well-researched questions that encourage detailed and insightful responses.
             </p>
           </div>
         </div>
       </div>
 
-      {/* 네 번째 카드: Balancing Flexibility */}
+      {/* Fourth Card: Topic Management */}
       <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[3] = el)}>
-        <div className="dataset-subtitle fade-in-text">3. Balancing Flexibility and Depth</div>
+        <div className="dataset-subtitle fade-in-text">3. Topic Management</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
-              • <strong>Adapt to Responses:</strong> Build questions based on the interviewee&apos;s answers to expand the discussion naturally.
+              • <strong>Structured Transitions:</strong> Execute clear and logical progression between different topics.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Request Specific Examples:</strong> Encourage interviewees to provide real-life use cases and detailed scenarios.
+              • <strong>Topic Depth:</strong> Ensure thorough exploration of each topic with minimum 4-5 exchange turns.
+            </p>
+            <p className="attribute-text fade-in-text">
+              • <strong>Content Efficiency:</strong> Minimize topic repetition while maintaining comprehensive coverage.
+            </p>
+            <p className="attribute-text fade-in-text">
+              • <strong>Flow Management:</strong> Maintain natural conversation flow during topic transitions.
             </p>
           </div>
         </div>
       </div>
 
-      {/* 다섯 번째 카드: Time Management */}
+      {/* Fifth Card: Emotional Engagement */}
       <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[4] = el)}>
-        <div className="dataset-subtitle fade-in-text">4. Effective Time Management</div>
+        <div className="dataset-subtitle fade-in-text">4. Emotional Engagement</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
-              • <strong>Prioritize Key Questions:</strong> Cover critical topics early and allocate time for additional exploration.
+              • <strong>Empathetic Response:</strong> Demonstrate appropriate understanding and support throughout the interview.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Avoid Redundancy:</strong> Skip repetitive questions and summarize when necessary to maintain flow.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* 여섯 번째 카드: Key Takeaways */}
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[5] = el)}>
-        <div className="dataset-subtitle fade-in-text">📌 Key Takeaways</div>
-        <div className="dataset-content">
-          <div className="attribute-list">
-            <p className="attribute-text fade-in-text">
-              • Structured yet flexible interview design ensures clarity and depth in data collection.
+              • <strong>Emotional Awareness:</strong> Remain attentive to and acknowledge the interviewee's emotional state changes.
             </p>
             <p className="attribute-text fade-in-text">
-              • Active listening and tailored follow-up questions are critical for detailed insights.
-            </p>
-            <p className="attribute-text fade-in-text">
-              • Efficient time management and precise questioning enhance data quality and usability.
+              • <strong>Atmosphere Creation:</strong> Foster a balanced environment that maintains professionalism while encouraging open dialogue.
             </p>
           </div>
         </div>
@@ -132,4 +126,4 @@ const Guidelines = () => {
   );
 };
 
-export default Guidelines; 
+export default Guidelines;

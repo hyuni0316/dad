@@ -21,6 +21,8 @@ import ExampleConversation_emotion from "./components/ExampleConversation_emotio
 import ExampleConversation_skill from "./components/ExampleConversation_skill/ExampleConversation_skill.jsx";
 import Summary from "./components/Summary/Summary.jsx";
 import Guidelines from "./components/Guidelines/Guidelines.jsx";
+import Guidelines2 from "./components/Guidelines2/Guidelines2.jsx";
+import Guidelines3 from "./components/Guidelines3/Guidelines3.jsx";
 import Scroll_down from "./components/Scroll_down/Scroll_down.jsx";
 
 import "./App.css";
@@ -172,10 +174,12 @@ const App = () => {
 
       <div className="page-change">
         <div className="page-change-title">
-          Let’s explore summaries and Guidelines for a Successful Interview in depth.
+          Now, let's summarize the key findings and practical guidelines derived from our analysis.
         </div>
         <div className="page-change-content">
-          Mastering these principles can help you navigate interviews with confidence and achieve outstanding results.
+          Understanding these patterns and implementing the insights can help improve interview 
+          and maximize the effectiveness of information gathering. 
+          Additionally, this can serve as a key metric for evaluating interview quality.
         </div>
       </div>
 
@@ -185,6 +189,14 @@ const App = () => {
 
       <section className="section">
         <Guidelines />
+      </section>
+
+      <section className="section">
+        <Guidelines2 />
+      </section>
+
+      <section className="section">
+        <Guidelines3 />
       </section>
     </div>
   );
