@@ -1,12 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
 import WordDisplay from './WordDisplay';
-import { categorizeWord } from './utils';
 
 const Chart1_11 = () => {
   const containerRef = useRef(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
   
   useEffect(() => {
+    const observedElement = containerRef.current;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,13 +20,13 @@ const Chart1_11 = () => {
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (observedElement) {
+      observer.observe(observedElement);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (observedElement) {
+        observer.unobserve(observedElement);
       }
     };
   }, []);
