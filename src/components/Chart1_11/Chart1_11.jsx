@@ -1,98 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-
-const categorizeWord = (word) => {
-  const serviceWords = ['Toss', 'App', 'BankSalad', 'Service', 'UI', 'Notification', 'Phone', 'Experience', 'Information'];
-  const bankWords = ['Bank', 'Account', 'Transfer', 'Profile', 'Card', 'Insurance', 'Loan', 'Product', 'Advertisement'];
-  const financeWords = ['Investment', 'Asset', 'Fund', 'Return', 'Securities', 'Scholarship', 'Finance', 'Support', 'Benefit', 'Point', 'Payment', 'Money', 'Amount'];
-  const adverbWords = ['Check', 'Activity', 'Management', 'Just', 'Now', 'Very', 'But', 'Little', 'So', 'Many', 'Use', 'Think'];
-
-  if (serviceWords.includes(word)) return '#E84DA5';
-  if (bankWords.includes(word)) return '#A9AE22';
-  if (financeWords.includes(word)) return '#2E94D8';
-  if (adverbWords.includes(word)) return '#9A9EAB';
-  return '#000000';
-};
-
-const WordDisplay = ({ words, selectedCategories }) => {
-  const [tooltip, setTooltip] = useState({ show: false, text: '', word: '', x: 0, y: 0 });
-  const wordRefs = useRef({});
-
-  const handleMouseEnter = (word, count) => {
-    const wordEl = wordRefs.current[word];
-    if (wordEl) {
-      const rect = wordEl.getBoundingClientRect();
-      setTooltip({
-        show: true,
-        text: `${count}`,
-        word: word,
-        x: rect.left + (rect.width / 2),
-        y: rect.top
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setTooltip({ show: false, text: '', word: '', x: 0, y: 0 });
-  };
-
-  return (
-    <div className="wordcloud-section">
-      <div className="wordcloud" style={{ 
-        display: 'grid',
-        gridTemplateColumns: '1fr',
-        gridTemplateRows: 'repeat(20, 1fr)',
-      }}>
-        {words.map(([word, count], index) => {
-          const wordCategory = categorizeWord(word);
-          const fontSize = Math.max(12, Math.min(36, count * 0.8));
-          
-          const shouldDisplay = selectedCategories.length === 0 || selectedCategories.includes(wordCategory);
-          
-          return (
-            <span
-              key={index}
-              ref={el => wordRefs.current[word] = el}
-              style={{
-                fontSize: `${fontSize}px`,
-                color: categorizeWord(word),
-                display: shouldDisplay ? 'flex' : 'none',
-                justifyContent: 'center',
-                alignItems: 'center',
-                cursor: 'default',
-                position: 'relative',
-                padding: '1rem',
-                // width: '100%',
-                height: '30px',
-                opacity: shouldDisplay ? 1 : 0.3,
-                transition: 'opacity 0.3s ease',
-
-              }}
-              onMouseEnter={() => handleMouseEnter(word, count)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {word}
-              {tooltip.show && tooltip.word === word && (
-                <div 
-                  className="tooltip show"
-                  style={{
-                    position: 'absolute',
-                    bottom: '71%',
-                    transform: 'translateX(-50%)',
-                    marginBottom: '0px',
-                    textAlign: 'center',
-                    fontSize: '20px'
-                  }}
-                >
-                  {tooltip.text}
-                </div>
-              )}
-            </span>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+import { useRef, useEffect, useState } from 'react';
+import WordDisplay from './WordDisplay';
+import { categorizeWord } from './utils';
 
 const Chart1_11 = () => {
   const containerRef = useRef(null);
@@ -304,7 +212,7 @@ const Chart1_11 = () => {
           <strong>✔️ Characteristics of the Normal Interviews:</strong>
           <p>
             Normal interviews incorporate more common financial terms and include vocabulary related to the 
-            interviewee's background, such as student-specific references, 
+            interviewee&apos;s background, such as student-specific references, 
             creating a casual yet contextually relevant tone.
           </p>
         </div>
@@ -313,7 +221,7 @@ const Chart1_11 = () => {
           <strong>✔️ Characteristics of the Worst Interviews</strong>
           <p>
           The worst interviews feature <span style={{ fontWeight: '600'}}>a high frequency of unnecessary adverbs and fillers</span>, such as 
-          "just," "now," and "really," which dilute the clarity and professionalism of the responses.
+          &ldquo;just,&rdquo; &ldquo;now,&rdquo; and &ldquo;really,&rdquo; which dilute the clarity and professionalism of the responses.
           </p>
         </div>
 

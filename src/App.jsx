@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Chart1_1 from "./components/Chart1_1/Chart1_1.jsx";
 // import Chart1_2 from "./components/Chart1_2/Chart1_2.jsx";
 import Chart1_3 from "./components/Chart1_3/Chart1_3.jsx";
@@ -22,7 +22,7 @@ import ExampleConversation_skill from "./components/ExampleConversation_skill/Ex
 import Summary from "./components/Summary/Summary.jsx";
 import Guidelines from "./components/Guidelines/Guidelines.jsx";
 import Guidelines2 from "./components/Guidelines2/Guidelines2.jsx";
-import Guidelines3 from "./components/Guidelines3/Guidelines3.jsx";
+// import Guidelines3 from "./components/Guidelines3/Guidelines3.jsx";
 import Scroll_down from "./components/Scroll_down/Scroll_down.jsx";
 
 import "./App.css";
