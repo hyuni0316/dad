@@ -100,14 +100,13 @@ const Chart1_6 = () => {
         <div className="insight-section">
           <strong>✔️ Interviewee Skill Distribution</strong>
           <p>
-            The use of specific questions, context understanding, and active listening was most frequent across all scenarios. In the best scenario, the proportions of emotional support, follow-up questions, and polite greetings were notably higher compared to other scenarios.
+            The use of specific questions, context understanding, and active listening was most frequent across all scenarios. <span style={{ fontWeight: '600'}}>In the best scenario, the proportions of emotional support, follow-up questions, and polite greetings</span> were notably higher compared to other scenarios.
           </p>
         </div>
-
         <div className="insight-section">
           <strong>✔️ Interviewee Response Distribution</strong>
           <p>
-            Passive responses and information-providing responses accounted for the largest proportions of all responses. In the best scenario, receptive responses were relatively more frequent compared to other scenarios.
+            Passive responses and information-providing responses accounted for the largest proportions of all responses. <span style={{ fontWeight: '600'}}>In the best scenario, receptive responses</span> were relatively more frequent compared to other scenarios.
           </p>
         </div>
 
@@ -116,8 +115,8 @@ const Chart1_6 = () => {
           <p>
             The interviewer’s skill usage underscores the importance of fostering a supportive and engaging 
             atmosphere to elicit more positive and interactive responses. 
-            While there were slight differences across scenarios, the overall distributions were notably 
-            similar. This could be attributed to the small sample size or the fact that 
+            <span style={{ fontWeight: '600'}}> While there were slight differences across scenarios, the overall distributions were 
+            similar.</span> This could be attributed to the small sample size or the fact that 
             both interviewer skill types and interviewee response types were automatically 
             categorized and extracted using LLMs. These findings highlight the need for further research 
             to refine and improve the methods of categorizing and classifying these types more effectively.

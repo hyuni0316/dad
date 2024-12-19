@@ -164,9 +164,9 @@ const Chart1_14 = () => {
         <div className="key-insight">
           <strong>📌 Key Insights </strong>
           <p>
-            The quality of interviews directly correlates with the breadth and depth of information gathered. 
-            Best interviews captured nearly triple the meaningful information compared to worst interviews, 
-            covering more sophisticated topics. This highlights the importance of well-structured questions 
+            The quality of interviews directly correlates with the breadth and depth of information gathered.  
+            <span style={{ fontWeight: '600'}}> Best interviews captured nearly triple the meaningful information compared to worst interviews, 
+            covering more sophisticated topics.</span> This highlights the importance of well-structured questions 
             and strategic topic management to maximize the value of interviews.
           </p>
         </div>

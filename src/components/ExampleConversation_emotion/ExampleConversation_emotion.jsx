@@ -38,20 +38,7 @@ const ConversationBox = ({ data, title, startAnimation }) => {
     timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
     timeoutsRef.current = [];
     
-    setVisibleMessages([]);
-
-    data.forEach((message, index) => {
-      const timeout = setTimeout(() => {
-        setVisibleMessages(prev => {
-          if (prev.some(m => m.id === message.id)) {
-            return prev;
-          }
-          return [...prev, message];
-        });
-      }, index * 1000);
-      
-      timeoutsRef.current.push(timeout);
-    });
+    setVisibleMessages(data);
 
     return () => {
       timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
@@ -94,12 +81,13 @@ const ExampleConversation_emotion = () => {
   const [startSecondAnimation, setStartSecondAnimation] = useState(false);
 
   useEffect(() => {
+    const firstConversationDuration = conversationData1.length * 1000; // 각 메시지가 1초 간격으로 나타남
     const timer1 = setTimeout(() => {
       setShowSecondConversation(true);
       setTimeout(() => {
         setStartSecondAnimation(true);
       }, 100);
-    }, 4000);
+    }, firstConversationDuration);
 
     return () => {
       clearTimeout(timer1);

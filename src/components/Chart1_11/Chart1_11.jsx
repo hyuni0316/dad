@@ -294,7 +294,7 @@ const Chart1_11 = () => {
         <div className="insight-section">
           <strong>✔️ Characteristics of the Best Interviews</strong>
           <p>
-            Best interviews are characterized by the frequent use of specialized and precise financial terminology, 
+            Best interviews are characterized by the frequent use of <span style={{ fontWeight: '600'}}>specialized and precise financial terminology, </span>
             including terms related to investments, funds, and securities, ensuring clarity and professionalism. 
             Additionally, unnecessary words or fillers are rarely present, maintaining a concise and focused dialogue.
           </p>
@@ -312,7 +312,7 @@ const Chart1_11 = () => {
         <div className="insight-section">
           <strong>✔️ Characteristics of the Worst Interviews</strong>
           <p>
-          The worst interviews feature a high frequency of unnecessary adverbs and fillers, such as 
+          The worst interviews feature <span style={{ fontWeight: '600'}}>a high frequency of unnecessary adverbs and fillers</span>, such as 
           "just," "now," and "really," which dilute the clarity and professionalism of the responses.
           </p>
         </div>
@@ -323,8 +323,8 @@ const Chart1_11 = () => {
           The analysis of the top 20 most frequent words reveals key patterns across scenarios. 
           In the worst scenarios, excessive use of filler words and vague terms dominates, 
           contrasting with the concise and precise language seen in the best scenarios. 
-          These findings indicate that a higher frequency of such unnecessary words could 
-          serve as a strong indicator of a less effective interview scenario.
+          <span style={{ fontWeight: '600'}}> These findings indicate that a higher frequency of such unnecessary words could 
+          serve as a strong indicator of a less effective interview scenario.</span>
           </p>
         </div>
       </div>

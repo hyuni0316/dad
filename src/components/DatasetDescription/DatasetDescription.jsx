@@ -42,7 +42,7 @@ const DatasetDescription = () => {
             <span className="goal-label fade-in-text">Interview Goal</span>
             <p className="goal-text fade-in-text">
               The goal of three interviews is to explore the experience of using financial
-              applications and to understand <br /> how individuals manage their assets.
+              applications and to understand how individuals manage their assets.
             </p>
           </div>
         </div>
@@ -123,7 +123,7 @@ const DatasetDescription = () => {
         <div className="dataset-subsubtitle-container fade-in-text">
           <div className="dataset-subsubtitle">Interviewee Responses</div>
           <p className="dataset-subsubtitle-description">
-            The interviewee responses are categorized into 7 categories
+            The responses are categorized into 7 categories
           </p>
         </div>
         <div className="dataset-content">

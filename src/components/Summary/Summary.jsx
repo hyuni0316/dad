@@ -44,7 +44,7 @@ const Summary = () => {
       </div>
 
       <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[1] = el)}>
-        <div className="dataset-subtitle fade-in-text">1. Speech Patterns and Flow</div>
+        <div className="dataset-subtitle-summary fade-in-text">1. Speech Patterns and Flow</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -55,10 +55,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[2] = el)}>
-        <div className="dataset-subtitle fade-in-text">2. Emotional Distribution</div>
+        <div className="dataset-subtitle-summary fade-in-text">2. Emotional Distribution</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -69,10 +67,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[3] = el)}>
-        <div className="dataset-subtitle fade-in-text">3. Skills and Response Patterns</div>
+        <div className="dataset-subtitle-summary fade-in-text">3. Skills and Response Patterns</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -83,10 +79,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[4] = el)}>
-        <div className="dataset-subtitle fade-in-text">4. Frequent Words</div>
+        <div className="dataset-subtitle-summary fade-in-text">4. Frequent Words</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -97,10 +91,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[5] = el)}>
-        <div className="dataset-subtitle fade-in-text">5. Topic Switching</div>
+        <div className="dataset-subtitle-summary fade-in-text">5. Topic Switching</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -111,10 +103,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[6] = el)}>
-        <div className="dataset-subtitle fade-in-text">6. Repetition</div>
+        <div className="dataset-subtitle-summary fade-in-text">6. Repetition</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -125,10 +115,8 @@ const Summary = () => {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="dataset-card fade-in" ref={(el) => (cardsRef.current[7] = el)}>
-        <div className="dataset-subtitle fade-in-text">7. Valuable Information</div>
+        <div className="dataset-subtitle-summary fade-in-text">7. Valuable Information</div>
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
@@ -139,7 +127,9 @@ const Summary = () => {
             </p>
           </div>
         </div>
+
       </div>
+
     </div>
   );
 };

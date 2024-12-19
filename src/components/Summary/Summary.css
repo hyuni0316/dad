@@ -35,12 +35,13 @@
   color: #333;
 }
 
-.dataset-subtitle {
-  font-size: 1.5em;
+.dataset-subtitle-summary {
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 15px;
-  color: #444;
-  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  padding: 5px 15px 0;
 }
 
 .dataset-content {

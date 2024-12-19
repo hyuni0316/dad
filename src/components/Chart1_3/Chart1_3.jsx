@@ -112,7 +112,7 @@ const Chart1_3 = ({ scenario }) => {
         <p>
           Across all three scenarios, both the interviewer and interviewee generally maintained a neutral 
           and objective tone, fostering a balanced and professional atmosphere. 
-          However, the best scenario exhibited the widest range of emotional distribution, 
+          However, <span style={{ fontWeight: '600'}}>the best scenario exhibited the widest range of emotional distribution, </span>
           suggesting that incorporating emotional exchanges between the interviewer and interviewee 
           could enhance the quality of the interview.
         </p>
@@ -121,8 +121,8 @@ const Chart1_3 = ({ scenario }) => {
       <div className="insight-section">
         <strong>✔️ Emotional Differences Between the Interviewer and Interviewee</strong>
         <p>
-          The interviewer displayed a relatively higher level of surprise, often in reaction to unexpected insights 
-          or answers from the interviewee. In contrast, the interviewee exhibited a broader range of emotions, 
+          <span style={{ fontWeight: '600'}}>The interviewer displayed a relatively higher level of surprise</span>, often in reaction to unexpected insights 
+          or answers from the interviewee. In contrast, <span style={{ fontWeight: '600'}}>the interviewee exhibited a broader range of emotions, </span>
           including joy, sadness, fear, and disgust. 
           Negative emotions were particularly evident when discussing uncomfortable topics or suggesting improvements,
            reflecting their deeper emotional engagement with the subject matter.
@@ -133,7 +133,7 @@ const Chart1_3 = ({ scenario }) => {
         <strong>📌 Key Insights:</strong>
         <p>
           While there are slight differences in emotional distribution between the interviewer and interviewee, 
-          the dominance of the "neutral" category in emotion classification using LLMs suggests 
+          <span style={{ fontWeight: '600'}}>the dominance of the "neutral"</span> category in emotion classification using LLMs suggests 
           that analyzing emotions at the level of individual sentence units may not be efficient or insightful.
         </p>
       </div>

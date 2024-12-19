@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Chart1_1 from "./components/Chart1_1/Chart1_1.jsx";
 // import Chart1_2 from "./components/Chart1_2/Chart1_2.jsx";
 import Chart1_3 from "./components/Chart1_3/Chart1_3.jsx";
@@ -57,8 +57,36 @@ const App = () => {
     };
   }, []);
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="container">
+      <div className="table-of-contents">
+        <div className="toc-header">Contents</div>
+        <div className="toc-content">
+          <ul className="toc-list">
+            <li className="toc-item" onClick={() => scrollToSection('introduction')}>1. Introduction</li>
+            <li className="toc-item" onClick={() => scrollToSection('dataset')}>2. Dataset Description</li>
+            <li className="toc-item" onClick={() => scrollToSection('analysis')}>3. Analysis</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('speech')}>3-1. Amount of Speech</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('sentiment')}>3-2. Sentiment Analysis</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('skills')}>3-3. Interviewer Skills and Responses</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('words')}>3-4. Frequent Words</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('topic')}>3-5. Topic Transition</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('repetition')}>3-6. Repetition Q&A</li>
+            <li className="toc-item toc-subitem" onClick={() => scrollToSection('valuable')}>3-7. Valuable Information</li>
+            <li className="toc-item" onClick={() => scrollToSection('summary')}>4. Summary of Findings</li>
+            <li className="toc-item" onClick={() => scrollToSection('guidelines')}>5. Guidelines for a Successful Interview</li>
+            <li className="toc-item" onClick={() => scrollToSection('redflags')}>6. Red Flags of a Bad Interview </li>
+          </ul>
+        </div>
+      </div>
+
       <header className="header">
         <div className="header-title-container">
           <h1 className="hero-title">Understanding What Defines a Good or Bad Interview</h1>
@@ -67,21 +95,21 @@ const App = () => {
         <Scroll_down className="scroll-down" />
       </header>
 
-      <section className="section">
+      <section id="introduction" className="section">
         <Introduction />
       </section>
 
-      <section className="section">
+      <section id="dataset" className="section">
         <DatasetDescription />
       </section>
 
-      <div className="page-change">
+      <div id="analysis" className="page-change">
         <div className="page-change-title">
           Alright, let’s dive into the analysis results and explore what we’ve uncovered!
         </div>
       </div>
 
-      <section className="section">
+      <section id="speech" className="section">
         <div className="section-title">
           Is there a difference in the amount of speech  per turn <br /> depending on the scenario?
         </div>
@@ -91,7 +119,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section id="sentiment" className="section">
         <div className="section-title">
           Does the distribution of emotions differ <br /> across the Best, Normal, and Worst scenarios?
         </div>
@@ -107,7 +135,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section id="skills" className="section">
         <div className="section-title">
           How are the types of <br /> Interviewer Skills and Interviewee Responses distributed?
         </div>
@@ -138,14 +166,14 @@ const App = () => {
         </div>
       </section> */}
 
-      <section className="section">
+      <section id="words" className="section">
         <div className="section-title">What are the most frequently occurring words in each scenario?</div>
         <div className="chart-content">
           <Chart1_11 />
         </div>
       </section>
 
-      <section className="section">
+      <section id="topic" className="section">
         <div className="section-title">
           How often does topic switching occur during the conversation flow?
         </div>
@@ -154,7 +182,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section id="repetition" className="section">
         <div className="section-title">
           How frequently were the same questions repeated by the interviewer, and how often did the interviewee provide repeated responses?
         </div>
@@ -163,7 +191,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section id="valuable" className="section">
         <div className="section-title">
           How much valuable information is contained in the responses?
         </div>
@@ -174,7 +202,7 @@ const App = () => {
 
       <div className="page-change">
         <div className="page-change-title">
-          Now, let's summarize the key findings and practical guidelines derived from our analysis.
+          Now, let&apos;s summarize the key findings and practical guidelines derived from our analysis.
         </div>
         <div className="page-change-content">
           Understanding these patterns and implementing the insights can help improve interview 
@@ -183,21 +211,33 @@ const App = () => {
         </div>
       </div>
 
-      <section className="section">
+      <section id="summary" className="section">
         <Summary />
       </section>
 
-      <section className="section">
+      <section id="guidelines" className="section">
         <Guidelines />
       </section>
 
-      <section className="section">
+      <section id="redflags" className="section">
         <Guidelines2 />
       </section>
 
-      <section className="section">
+      {/* <section className="section">
         <Guidelines3 />
-      </section>
+      </section> */}
+      
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-name">Hyun Lee</div>
+          <div className="footer-email">hyunini0408@kaist.ac.kr</div>
+          <div className="footer-info">
+            Course : Data Analytics for Designers (DAD)
+            <br />
+            2024 Fall Department of Industrial Design, KAIST
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

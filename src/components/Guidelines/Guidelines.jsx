@@ -90,16 +90,13 @@ const Guidelines = () => {
         <div className="dataset-content">
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
-              • <strong>Structured Transitions:</strong> Execute clear and logical progression between different topics.
+              • <strong>Structured Transitions:</strong> Execute clear and logical progression between different topics. Topic transitions are recommended to be less than 10 times.
             </p>
             <p className="attribute-text fade-in-text">
               • <strong>Topic Depth:</strong> Ensure thorough exploration of each topic with minimum 4-5 exchange turns.
             </p>
             <p className="attribute-text fade-in-text">
               • <strong>Content Efficiency:</strong> Minimize topic repetition while maintaining comprehensive coverage.
-            </p>
-            <p className="attribute-text fade-in-text">
-              • <strong>Flow Management:</strong> Maintain natural conversation flow during topic transitions.
             </p>
           </div>
         </div>
@@ -114,7 +111,7 @@ const Guidelines = () => {
               • <strong>Empathetic Response:</strong> Demonstrate appropriate understanding and support throughout the interview.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Emotional Awareness:</strong> Remain attentive to and acknowledge the interviewee's emotional state changes.
+              • <strong>Emotional Awareness:</strong> Remain attentive to and acknowledge the interviewee&apos;s emotional state changes.
             </p>
             <p className="attribute-text fade-in-text">
               • <strong>Atmosphere Creation:</strong> Foster a balanced environment that maintains professionalism while encouraging open dialogue.

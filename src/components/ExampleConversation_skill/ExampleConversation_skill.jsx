@@ -38,20 +38,7 @@ const ConversationBox = ({ data, title, startAnimation, description }) => {
     timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
     timeoutsRef.current = [];
     
-    setVisibleMessages([]);
-
-    data.forEach((message, index) => {
-      const timeout = setTimeout(() => {
-        setVisibleMessages(prev => {
-          if (prev.some(m => m.id === message.id)) {
-            return prev;
-          }
-          return [...prev, message];
-        });
-      }, index * 1000);
-      
-      timeoutsRef.current.push(timeout);
-    });
+    setVisibleMessages(data);
 
     return () => {
       timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
@@ -100,11 +87,11 @@ const ExampleConversation_skill = () => {
     const timer1 = setTimeout(() => {
       setFirstConversationDone(true);
       setShowSecondConversation(true);
-    }, (conversationData1.length * 1000) + 1000);
+    }, (conversationData1.length * 500) + 500);
 
     const timer2 = setTimeout(() => {
       setShowThirdConversation(true);
-    }, (conversationData1.length * 1000) + (conversationData2.length * 1000) + 2000);
+    }, (conversationData1.length * 500) + (conversationData2.length * 500) + 1000);
 
     return () => {
       clearTimeout(timer1);

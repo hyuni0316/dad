@@ -127,10 +127,10 @@ const Chart1_1 = ({scenario}) => {
         <strong>✔️ Speech Patterns by Scenario</strong>
         <p>
           Although the differences were not substantial across scenarios, 
-          the difference in speech volume between the interviewer and the interviewee was smallest in the best scenario.
-          Interestingly, in the best scenario, the speech volume per turn was relatively lower compared 
+          <span style={{ fontWeight: '600'}}> the difference in speech volume between the interviewer and the interviewee was smallest in the best scenario.
+          Interestingly, in the best scenario, the speech volume per turn was relatively lower </span> compared 
           to the worst and normal scenarios. However, the total number of interactions between the interviewer
-           and the interviewee was 1,033 turns, making it the most dynamic scenario.
+           and the interviewee was 1,033 turns, making it the most dynamic interaction.
         </p>
       </div>
 

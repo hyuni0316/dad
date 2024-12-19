@@ -55,7 +55,7 @@ const Chart1_2 = () => {
                 fontWeight: "bold",
               }}
             >
-              Speech Volume ({scenarioType} Section)
+              Amount of Speech ({scenarioType})
             </div>
             <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto' }}>
               <ResponsiveContainer width="100%" height={350}>

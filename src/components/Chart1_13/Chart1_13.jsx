@@ -239,8 +239,8 @@ const Chart1_13 = () => {
             The analysis of questioning patterns revealed distinct differences in interviewing efficiency, 
             where the Best interviews demonstrated optimal information collection with only 6 repetitions, 
             while Normal interviews showed moderate efficiency with 10 repetitions in basic information gathering, 
-            and Worst interviews exhibited an inefficient pattern with excessive repetition occurring 21 times, 
-            indicating a significant decline in questioning effectiveness.
+            and <span style={{ fontWeight: '600'}}>Worst interviews exhibited an inefficient pattern with excessive repetition occurring 21 times, 
+            indicating a significant decline in questioning effectiveness.</span>
           </p>
         </div>
 
@@ -249,9 +249,9 @@ const Chart1_13 = () => {
           <p>
             The response patterns varied significantly across interview quality levels, 
             with the Best interviews showing 9 repetitions, 
-            while Normal interviews had 12 repetitions , 
-            and Worst interviews demonstrated inefficiency with 45 repetitions 
-            that merely expressed the same content in different ways without adding substantial value.
+            while Normal interviews had 12 repetitions, 
+            and <span style={{ fontWeight: '600'}}>Worst interviews demonstrated inefficiency with 45 repetitions 
+            that merely expressed the same content in different ways without adding substantial value.</span>
           </p>
         </div>
 
@@ -260,8 +260,8 @@ const Chart1_13 = () => {
           <p>
             Effective interviews minimize unnecessary repetitions in both questions and responses, 
             focusing on extracting meaningful and concise information. 
-            Excessive repetition, as seen in the worst interviews, is a clear indicator of reduced efficiency and quality. 
-            Avoiding redundant exchanges and maintaining a streamlined flow can significantly enhance the overall interview experience.
+            <span style={{ fontWeight: '600'}}> Excessive repetition, as seen in the worst interviews, is a clear indicator of reduced efficiency and quality. </span> 
+             Avoiding redundant exchanges and maintaining a streamlined flow can significantly enhance the overall interview experience.
           </p>
         </div>
       </div>

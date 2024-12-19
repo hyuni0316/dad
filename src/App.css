@@ -46,6 +46,7 @@ body::-webkit-scrollbar {
   background-color: #1a1a1a;
   color: white;
   box-sizing: border-box;
+  padding-top: 80px;
 }
 
 .header-title-container {
@@ -57,10 +58,11 @@ body::-webkit-scrollbar {
   width: 100%;
   max-width: 1200px;
   padding: 0 1rem;
+  margin-top: 0px;
 }
 
 .scroll-down {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   color: white;
 }
 
@@ -274,4 +276,99 @@ body::-webkit-scrollbar {
     margin: 1rem 0.5rem;
     padding: 1rem;
   }
+}
+
+.footer {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #1a1a1a;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.footer-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.footer-email {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.footer-info {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 목차 네비게이션 스타일 수정 */
+.table-of-contents {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #F7F9FC;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 83px; /* 초기 너비 설정 */
+  transition: width 0.3s ease-out;
+}
+
+.table-of-contents:hover {
+  width: 300px; /* 호버 시 늘어나는 너비 */
+}
+
+.toc-header {
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 500;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+}
+
+.toc-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.table-of-contents:hover .toc-content {
+  display: block;
+  opacity: 1;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.toc-item:hover {
+  background-color: rgb(229, 229, 229);
+  color: #333;
+}
+
+.toc-subitem {
+  padding-left: 20px;
+  font-size: 0.85rem;
 }

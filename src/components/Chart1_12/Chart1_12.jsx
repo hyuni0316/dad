@@ -124,7 +124,7 @@ const Chart1_12 = () => {
             The analysis reveals distinct patterns across interview quality levels. 
             The Best interview demonstrates optimal efficiency with 9 transitions, each characterized by thorough topic exploration and meaningful depth. 
             The Normal interview shows acceptable progression with 10 transitions. 
-            The Worst interview exhibits inefficient flow with 13 transitions, marked by unnecessary repetition and superficial coverage of topics.
+            <span style={{ fontWeight: '600'}}> The Worst interview exhibits inefficient flow with 13 transitions, marked by unnecessary repetition and superficial coverage of topics.</span>
           </p>
         </div>
 
@@ -132,7 +132,7 @@ const Chart1_12 = () => {
           <strong>✔️ Transition Pattern </strong>
           <p>
             Each interview type displays unique transitional characteristics.
-            The Best interview maintains a coherent narrative with seamlessly connected topics, 
+            <span style={{ fontWeight: '600'}}> The Best interview maintains a coherent narrative with seamlessly connected topics, </span>
             demonstrating strategic planning and purposeful progression. 
             The worst interviews are marked by disjointed transitions, frequent backtracking,
              interruptions, and a lack of strategic direction in topic management.
@@ -146,8 +146,8 @@ const Chart1_12 = () => {
             while maintaining systematic progression between subjects. 
             This approach, combined with avoiding repetitive topic revisits, 
             significantly enhances interview efficiency and the overall quality of the conversation. 
-            In other words, frequent backtracking to the same topic can serve as 
-            a signal of a poorly conducted interview.
+            In other words, <span style={{ fontWeight: '600'}}>frequent backtracking to the same topic can serve as 
+            a signal of a poorly conducted interview.</span>
           </p>
         </div>
       </div>

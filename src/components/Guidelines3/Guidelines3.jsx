@@ -38,7 +38,7 @@ const Guidelines3 = () => {
         <div className="dataset-content">
           <div className="goal-section">
             <p className="goal-text fade-in-text">
-              A comprehensive framework for developing advanced AI interviewers using Large Language Models (LLMs), 
+              A comprehensive suggestion for developing advanced AI interviewers using Large Language Models (LLMs), 
               focusing on natural conversation flow, emotional intelligence, and continuous improvement.
             </p>
           </div>
@@ -54,7 +54,7 @@ const Guidelines3 = () => {
               • <strong>Predefined yet Adaptive Structures:</strong> Implement flexible conversation frameworks with dynamic branching paths, enabling contextual adaptation to user inputs while maintaining natural flow.
             </p>
             <p className="attribute-text fade-in-text">
-              • <strong>Repetition Control:</strong> Deploy dialogue history tracking with embedding-based semantic similarity comparison to prevent redundant interactions.
+              • <strong>Repetition Control:</strong> Deploy dialogue history tracking to prevent redundant interactions.
             </p>
             <p className="attribute-text fade-in-text">
               • <strong>Context Awareness:</strong> Maintain comprehensive conversation memory to ensure topic consistency and contextual relevance throughout the interview.
@@ -70,9 +70,6 @@ const Guidelines3 = () => {
           <div className="attribute-list">
             <p className="attribute-text fade-in-text">
               • <strong>Sentiment Analysis Integration:</strong> Implement real-time emotion detection from text/speech to dynamically adjust AI responses and tone.
-            </p>
-            <p className="attribute-text fade-in-text">
-              • <strong>Empathetic Language Models:</strong> Enhance emotional intelligence through fine-tuning on empathetic dialogue datasets.
             </p>
             <p className="attribute-text fade-in-text">
               • <strong>Personalized Interaction:</strong> Create emotion-aware response templates that validate user feelings and build meaningful connections.
