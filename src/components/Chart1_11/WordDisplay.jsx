@@ -63,7 +63,7 @@ const WordDisplay = ({ words, selectedCategories }) => {
                   style={{
                     position: 'absolute',
                     bottom: '71%',
-                    transform: 'translateX(-50%)',
+                    transform: 'translateX(-0%)',
                     marginBottom: '0px',
                     textAlign: 'center',
                     fontSize: '20px'
